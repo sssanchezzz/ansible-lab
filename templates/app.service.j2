@@ -1,15 +1,11 @@
-{#
-TODO: reuse your unit from Lab 1
-TODO: Path to jar should use variables {{ app_dir }}/{{ app_file }}
-TODO: Environment variable for PORT should use value from variable {{ app_port }}
-#}
 [Unit]
-Description=
-Requires=
-After=
+Description=Lab 3 ansible
+Requires=network.target
+After=network.target
 
 [Install]
 WantedBy=multi-user.target
 
 [Service]
-ExecStart=
+ExecStart=java -jar {{ app_dir }}/{{ app_file }}
+Environment=PORT={{ app_port }}
